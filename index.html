@@ -200,52 +200,48 @@
 
     <!-- Форма обратной связи -->
     <section>
-    <div class="contact-form">
-        <h2>Оставьте свои контактные данные</h2>
-        <form id="contactForm" onsubmit="return handleFormSubmit(event)">
-            <label for="name">Ваше имя:</label>
-            <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+        <div class="contact-form">
+            <h2>Оставьте свои контактные данные</h2>
+            <form id="contactForm" onsubmit="return handleFormSubmit(event)">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
 
-            <label for="email">Ваш email:</label>
-            <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
+                <label for="email">Ваш email:</label>
+                <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
 
-            <label for="phone">Ваш номер телефона:</label>
-            <input type="tel" id="phone" name="phone" placeholder="Введите номер телефона" required>
+                <label for="phone">Ваш номер телефона:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Введите номер телефона" required>
 
-            <label for="message">Ваше сообщение:</label>
-            <textarea id="message" name="message" placeholder="Опишите проблему" required></textarea>
+                <label for="message">Ваше сообщение:</label>
+                <textarea id="message" name="message" placeholder="Опишите проблему" required></textarea>
 
-            <button type="submit">Отправить</button>
-        </form>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="responseMessage" style="display:none;">
+        <p>Заявка принята! Ваш мастер: <span id="masterName"></span></p>
     </div>
-</section>
 
-<div id="responseMessage" style="display:none;">
-    <p>Заявка принята! Ваш мастер: <span id="Данияр Турсунов"></span></p>
-</div>
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // предотвращаем отправку формы
 
-<script>
-    function handleFormSubmit(event) {
-        event.preventDefault(); // предотвращаем отправку формы
+            // Мастера
+            const masters = ["Мастер 1", "Мастер 2"];
+            // Случайный выбор мастера (50/50)
+            const selectedMaster = masters[Math.floor(Math.random() * masters.length)];
 
-        // Мастера
-        const masters = ["Мастер 1", "Мастер 2"];
-        // Случайный выбор мастера (50/50)
-        const selectedMaster = masters[Math.floor(Math.random() * masters.length)];
+            // Показываем сообщение
+            document.getElementById("masterName").textContent = selectedMaster;
+            document.getElementById("responseMessage").style.display = "block";
 
-        // Показываем сообщение
-        document.getElementById("masterName").textContent = selectedMaster;
-        document.getElementById("responseMessage").style.display = "block";
+            // Очищаем форму
+            document.getElementById("contactForm").reset();
+        }
+    </script>
 
-        // Очищаем форму
-        document.getElementById("contactForm").reset();
-    }
-</script>
-
-
-<footer class="footer">
-    <p>&copy; 2024 Ремонт Телефонов. Все права защищены. Мы работаем по всей территории Казахстана, выезд мастера на дом или в офис.</p>
-</footer>
 
 </body>
 </html>
